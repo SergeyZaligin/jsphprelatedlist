@@ -25,6 +25,11 @@
 			//ninja($regions);
 			exit($regions);
 		}
+		if (isset($_POST['cityId'])) {
+			$citys = getAllCitysById();
+			//ninja($regions);
+			exit($citys);
+		}
 		
 	?>
 	<form action="" method="post">
