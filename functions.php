@@ -59,3 +59,25 @@ function getAllCountries(){
 
 	return $countries;
 }
+
+function getAllRegionsById(){
+
+	$id = (int)$_POST['regionId'];
+
+	global $connection;
+
+	$query  = "SELECT * ";
+	$query .= "FROM region_ ";
+	$query .= "WHERE id_country = {$id} ";
+
+	$result = mysqli_query($connection, $query);
+	confirm_query($result);
+
+	$regions = "<option value='0'>Выберите регион</option>";
+
+	while ($row = mysqli_fetch_assoc($result)) {
+		$regions .= "<option value='{$row['id_region']}'>{$row['region_name_ru']}</option>";
+	}
+
+	return $regions;
+}
